@@ -18,17 +18,21 @@ var maxIncreaseKeepingSkyline = function(grid) {
     for (let j = 0; j < grid.length; j++) {
       let current = grid[i][j];
       let rowValue = row[i];
-      let columnValue = column[i];
+      let columnValue = column[j];
 
       let lowestValue = Math.min(rowValue, columnValue);
-      let difference = lowestValue - current
-      output += difference;
+      if (lowestValue > current) {
+        let difference = lowestValue - current;
+        output += difference;
+      }
     }
   }
-
 
   return output;
 };
 
-grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]];
+grid = [[59,88,44],
+        [3,18,38],
+        [21,26,51]];
+
 console.log(maxIncreaseKeepingSkyline(grid));
