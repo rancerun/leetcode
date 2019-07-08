@@ -1,17 +1,26 @@
 
 var numTilePossibilities = function(tiles) {
-  let factorial = (num) => {
-    if (num == 1) return 1;
-    return num * factorial(num - 1);
+  let tilesArray = tiles.split('');
+
+  let permutationsArray = [];
+
+  let permutations = (array) => {
+    if (array.length == 1) {
+      permutationsArray.push(array);
+      return array;
+    }
+
+    for (let i = 0; i < array.length; i++) {
+      let currentChar = array.splice[i, 1];
+      let remainingChars = array.slice(0, i) + array.slice(i);
+      permutationsArray.push(currentChar + remainingChars);
+      permutations(remainingChars);
+    }
   }
 
-  let uniqueCount = new Set();
+  permutations(tiles);
 
-  for (let i = 0; i < tiles.length; i++) {
-    uniqueCount.add(tiles[i]);
-  }
+  return permutationsArray;
+}
 
-  return factorial(tiles.length) + uniqueCount.size;
-};
-
-console.log(numTilePossibilities("AAABBC"));
+console.log(numTilePossibilities("ABC"));
