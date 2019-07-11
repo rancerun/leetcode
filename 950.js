@@ -23,16 +23,22 @@ var deckRevealedIncreasing = function(deck) {
   let untouchedNums = indexPlace / 2
 
   // every other empty place in output array is the next number
+  let outputArrayIndex = 0;
 
-  for (let j = untouchedNums; j < deck.length; j++) {
-    let counter = 0;
-    for (let k = 0; k < output.length; k++) {
-      if (!output[k]) {
+  for (let j = untouchedNums; j < sortedDeck.length; j++) {
+    let counter = 0
+    let usedNumber = false;
+    while (usedNumber == false) {
+      if (!output[outputArrayIndex]) {
         counter ++;
         if (counter == 2) {
-          output[k] = sortedDeck[j];
-          counter = 0;
+          output[outputArrayIndex] = sortedDeck[j];
+          usedNumber = true;
         }
+      }
+      outputArrayIndex ++;
+      if (outputArrayIndex == output.length) {
+        outputArrayIndex = 0;
       }
     }
   }
