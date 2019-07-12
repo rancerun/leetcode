@@ -1,49 +1,61 @@
 
 var deckRevealedIncreasing = function(deck) {
-  let output = []
-  let indexPlace = 0
 
-  // sort the input array
+  let outputFunction = (inputArray, indexPlace, outputArray) => {
+    let outputArrayIndex = 0;
+    if (inputArray.length % 2 == 0) {
+      outputArrayIndex = inputArray.length - 1;
+    }
+
+    for (let j = indexPlace; j < inputArray.length; j++) {
+      let counter = 0;
+      let usedNumber = false;
+      while (!usedNumber) {
+        if (!outputArray[outputArrayIndex]) {
+          counter ++;
+          if (counter == 2) {
+            outputArray[outputArrayIndex] = inputArray[j];
+            usedNumber = true;
+          }
+        }
+        outputArrayIndex ++;
+        if (outputArrayIndex == outputArray.length) {
+          outputArrayIndex = 0;
+        }
+      }
+    }
+  }
+
+  let output = [];
+  let indexPlace = 0;
+  let currentNumIndex = 0;
 
   let sortedDeck = deck.sort(function(a,b) {
     return a - b;
   })
 
-  // every other index place should be the initial numbers of the input array
+  output[0] = sortedDeck[0];
 
-  for (let i = 0; i < deck.length; i++) {
+  for (let i = 1; i < deck.length; i++) {
+    indexPlace += 2;
     if (indexPlace < deck.length) {
       output[indexPlace] = sortedDeck[i]
-      indexPlace += 2;
+    } else {
+      indexPlace = i;
+      break;
     }
   }
 
-  // determine remaining numbers
-
-  let untouchedNums = indexPlace / 2
-
-  // every other empty place in output array is the next number
-  let outputArrayIndex = 0;
-
-  for (let j = untouchedNums; j < sortedDeck.length; j++) {
-    let counter = 0
-    let usedNumber = false;
-    while (usedNumber == false) {
-      if (!output[outputArrayIndex]) {
-        counter ++;
-        if (counter == 2) {
-          output[outputArrayIndex] = sortedDeck[j];
-          usedNumber = true;
-        }
-      }
-      outputArrayIndex ++;
-      if (outputArrayIndex == output.length) {
-        outputArrayIndex = 0;
-      }
-    }
+  if (deck.length <= 2) {
+    return sortedDeck;
+  } else if (deck.length % 2 == 0) {
+    output[deck.length - 1] = undefined;
+    outputFunction(sortedDeck, indexPlace, output);
+  } else {
+    outputFunction(sortedDeck, indexPlace, output);
   }
 
   return output;
-};
+}
 
-console.log(deckRevealedIncreasing([17,13,11,2,3,5,7]));
+console.log(deckRevealedIncreasing([1,2,3,4,5,6]));
