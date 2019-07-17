@@ -1,6 +1,6 @@
-# Personal answers to questions on www.leetcode.com
+## Personal answers to questions on www.leetcode.com
 
-## Usage
+### Usage
 
 ```
 nodemon ${app}
