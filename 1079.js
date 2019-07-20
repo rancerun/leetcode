@@ -18,7 +18,6 @@ var numTilePossibilities = function(tiles) {
       permutations(remainingChars);
     }
   }
-
   permutations(tiles);
 
   return permutationsArray;
