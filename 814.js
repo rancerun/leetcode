@@ -1,19 +1,19 @@
 
 // original solution - doesn't work
-var pruneTree = function(root) {
-  if (root.left) {
-    pruneTree(root.left);
-  }
-  if (root.right) {
-    pruneTree(root.right);
-  }
-  if (root.val == 0 && !root.left && !root.right) {
-    root.val = null;
-    return;
-  }
+// var pruneTree = function(root) {
+//   if (root.left) {
+//     pruneTree(root.left);
+//   }
+//   if (root.right) {
+//     pruneTree(root.right);
+//   }
+//   if (root.val == 0 && !root.left && !root.right) {
+//     root.val = null;
+//     return;
+//   }
 
-  return root;
-};
+//   return root;
+// };
 
 // revised solution - works
 var pruneTree = function(root) {
