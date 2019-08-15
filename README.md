@@ -2,6 +2,10 @@
 
 ### Usage
 
+Edit the script in package.json to the js file you're working on with Nodemon.
+
+Then run:
+
 ```
-nodemon ${app}
+npm run start
 ```

@@ -4,7 +4,7 @@
   "description": "personal practice for leetcode questions",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/nodemon/bin/nodemon.js 1122.js"
   },
   "repository": {
     "type": "git",
