@@ -4,7 +4,7 @@
   "description": "personal practice for leetcode questions",
   "main": "",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js 1122.js"
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js"
   },
   "repository": {
     "type": "git",
